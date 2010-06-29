@@ -17,6 +17,7 @@
     float hspace;
     CPTextField lengthValue;
     CPSlider slider;
+    CPPopUpButton hashType;
 }
 
 - (void) init_layout
@@ -57,6 +58,12 @@
 
 // -------------- ACTIONS ---------------
 
+// -- URL --
+- (void)urlChanged:(id)aSender
+{
+    console.log(@"urlChanged: %s", [aSender objectValue]);
+}
+
 // -- slider --
 - (void)sliderChangedValue:(id)aSender
 {
@@ -67,6 +74,12 @@
 - (void)textLengthChanged:(id)aSender
 {
     [slider setObjectValue:[aSender objectValue]];
+}
+
+// -- hash type changed --
+- (void)typeChanged:(id)aSender
+{
+    console.log( [[aSender selectedItem] title] );
 }
 
 // -------------- APPLICATION --------------------
@@ -102,6 +115,8 @@
     [urlTextField setVerticalAlignment:CPCenterTextAlignment];
     [urlTextField setEditable:true];
     [urlTextField setBezeled:true];
+    [urlTextField setTarget:self];
+    [urlTextField setAction:@selector(urlChanged:)];
     [contentView addSubview:urlTextField];
 
     // == Line 3 ==
@@ -128,16 +143,20 @@
     [lengthValue setIntValue:[slider objectValue]];
     [lengthValue setEditable:true];
     [lengthValue setBezeled:true];
-    [lengthValue setTarget: self];
     [lengthValue setAlignment:CPCenterTextAlignment];
     [lengthValue setVerticalAlignment:CPCenterTextAlignment];
+    [lengthValue setTarget: self];
     [lengthValue setAction:@selector(textLengthChanged:)];
     [contentView addSubview:lengthValue];
 
     // == Line 4 ==
-    // hashType=[[CP??? alloc] initWithFrame:
-    //             [self rectForColumn:1 line:4 width: 3 height: 1]];
-    // [contentView addSubview:hashType];
+    hashType=[[CPPopUpButton alloc] initWithFrame:
+                 [self rectForColumn:1 line:4 width: 8 height: 1]];
+    [hashType addItemWithTitle:@"base64"];
+    [hashType addItemWithTitle:@"hexa"];
+    [hashType setTarget: self];
+    [hashType setAction:@selector(typeChanged:)];
+    [contentView addSubview:hashType];
 
     // ======== Show all the content =============
     [theWindow orderFront:self];
