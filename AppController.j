@@ -24,7 +24,7 @@
     // init lines and columns
     var _tmp_column=[[CPMutableArray alloc] init];
     var _tmp_line=[[CPMutableArray alloc] init];
-    var height=24.0;
+    var height=27.0;
     var width=12.0;
     vspace=3.0;
     hspace=3.0;
@@ -60,7 +60,7 @@
 // -- slider --
 - (void)sliderChangedValue:(id)aSender
 {
-    [lengthValue setObjectValue:[aSender objectValue]];
+    [lengthValue setObjectValue:[CPString stringWithFormat:@"%d",[aSender objectValue]]];
 }
 
 // -- length textfield --
@@ -105,11 +105,13 @@
     [contentView addSubview:slider];
 
     lengthValue=[[CPTextField alloc] initWithFrame:
-                    [self rectForColumn:20 line:2 width:2 height: 1]];
+                    [self rectForColumn:20 line:2 width:3 height: 1]];
     [lengthValue setVerticalAlignment:CPCenterVerticalTextAlignment];
     [lengthValue setIntValue:[slider objectValue]];
     [lengthValue setEditable:true];
+    [lengthValue setBezeled:true];
     [lengthValue setTarget: self];
+    [lengthValue setAlignment:CPCenterTextAlignment];
     [lengthValue setAction:@selector(textLengthChanged:)];
     [contentView addSubview:lengthValue];
 
