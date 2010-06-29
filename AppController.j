@@ -24,7 +24,7 @@
     // init lines and columns
     var _tmp_column=[[CPMutableArray alloc] init];
     var _tmp_line=[[CPMutableArray alloc] init];
-    var height=27.0;
+    var height=33.0;
     var width=12.0;
     vspace=3.0;
     hspace=3.0;
@@ -78,6 +78,8 @@
 
     [self init_layout];
 
+
+    // == Line 1 ==
     // create title
     var title = [[CPTextField alloc] initWithFrame:
                     [self rectForColumn:1 line:1 width:25 height:1]];
@@ -87,14 +89,30 @@
     [title setAlignment:CPCenterTextAlignment];
     [contentView addSubview:title];
 
+    // == Line 3 ==
+    // add URL
+    urlLabel=[[CPTextField alloc] initWithFrame:
+        [self rectForColumn:1 line:2 width: 4 height: 1]];
+    [urlLabel setStringValue:@"URL"];
+    [urlLabel setVerticalAlignment:CPCenterTextAlignment];
+    [contentView addSubview:urlLabel];
+
+    urlTextField=[[CPTextField alloc] initWithFrame:
+        [self rectForColumn:5 line:2 width: 18 height: 1]];
+    [urlTextField setVerticalAlignment:CPCenterTextAlignment];
+    [urlTextField setEditable:true];
+    [urlTextField setBezeled:true];
+    [contentView addSubview:urlTextField];
+
+    // == Line 3 ==
     // add length of password
     var maxLengthLabel=[[CPTextField alloc] initWithFrame:
-                    [self rectForColumn:1 line:2 width:4 height:1]];
+                    [self rectForColumn:1 line:3 width:4 height:1]];
     [maxLengthLabel setVerticalAlignment:CPCenterVerticalTextAlignment];
     [maxLengthLabel setStringValue:@"length"];
     [contentView addSubview:maxLengthLabel];
 
-    slider = [[CPSlider alloc] initWithFrame:[self rectForColumn:5 line:2 width:15 height:1]];
+    slider = [[CPSlider alloc] initWithFrame:[self rectForColumn:5 line:3 width:15 height:1]];
     [slider setMinValue:8.0];
     [slider setMaxValue:40.0];
     [slider setAltIncrementValue:1.0];
@@ -105,15 +123,21 @@
     [contentView addSubview:slider];
 
     lengthValue=[[CPTextField alloc] initWithFrame:
-                    [self rectForColumn:20 line:2 width:3 height: 1]];
+                    [self rectForColumn:20 line:3 width:3 height: 1]];
     [lengthValue setVerticalAlignment:CPCenterVerticalTextAlignment];
     [lengthValue setIntValue:[slider objectValue]];
     [lengthValue setEditable:true];
     [lengthValue setBezeled:true];
     [lengthValue setTarget: self];
     [lengthValue setAlignment:CPCenterTextAlignment];
+    [lengthValue setVerticalAlignment:CPCenterTextAlignment];
     [lengthValue setAction:@selector(textLengthChanged:)];
     [contentView addSubview:lengthValue];
+
+    // == Line 4 ==
+    // hashType=[[CP??? alloc] initWithFrame:
+    //             [self rectForColumn:1 line:4 width: 3 height: 1]];
+    // [contentView addSubview:hashType];
 
     // ======== Show all the content =============
     [theWindow orderFront:self];
