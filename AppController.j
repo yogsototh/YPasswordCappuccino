@@ -53,7 +53,7 @@
 // will return the rect for an object begining at the 
 // third column of the second line and of width 4 columns
 - (CGRect) rectForColumn:(int)column line:(int)line width:(int)width height:(int)height {
-    console.log( @"rectForColumn: ([%d,%d],[%d,%d])", column, line, width, height);
+    // console.log( @"rectForColumn: ([%d,%d],[%d,%d])", column, line, width, height);
     // console.log( @"       output: ([%f,%f],[%f,%f])", _column[column], _line[line], _column[column + width] - hspace, _line[line + height] - vspace );
     return CGRectMake( _column[column], 
                         _line[line], 
@@ -62,7 +62,7 @@
 }
 
 - (CGRect) rectForTextfieldColumn:(int)column line:(int)line width:(int)width {
-    console.log( @"rectForColumn: ([%d,%d],[%d])", column, line, width);
+    // console.log( @"rectForColumn: ([%d,%d],[%d])", column, line, width);
     return CGRectMake( _column[column], 
                         _line[line] - 1, 
                         _column[column + width] - _column[column] - hspace, 
@@ -73,7 +73,7 @@
 
 - (void)updatePassword
 {
-    console.log(@"update password");
+    // console.log(@"update password");
     [password setStringValue:[model password]];
 }
 
@@ -82,7 +82,7 @@
 // -- Master Password --
 - (void)masterPasswordChanged:(id)aSender
 {
-    console.log(@"masterPasswordChanged: %s", [aSender objectValue]);
+    // console.log(@"masterPasswordChanged: %s", [aSender objectValue]);
     [model setMasterPassword:[aSender objectValue]];
     [self updatePassword];
 }
@@ -90,7 +90,7 @@
 // -- URL --
 - (void)urlChanged:(id)aSender
 {
-    console.log(@"urlChanged: %s", [aSender objectValue]);
+    // console.log(@"urlChanged: %s", [aSender objectValue]);
     [model setUrl:[aSender objectValue]];
     [self updatePassword];
 }
@@ -114,7 +114,7 @@
 // -- hash type changed --
 - (void)typeChanged:(id)aSender
 {
-    console.log( [[aSender selectedItem] title] );
+    // console.log( [[aSender selectedItem] title] );
     [model setType:[[aSender selectedItem] title]];
     [self updatePassword];
 }
@@ -122,7 +122,7 @@
 // -- change password --
 - (void)changePassword:(id)aSender
 {
-    console.log(@"change password");
+    // console.log(@"change password");
     uid+=1;
     [model setUid:uid];
     [self updatePassword];
@@ -131,7 +131,7 @@
 // -- reset password --
 - (void)resetPassword:(id)aSender
 {
-    console.log(@"reset password");
+    // console.log(@"reset password");
     uid=0;
     [model setUid:uid];
     [self updatePassword];

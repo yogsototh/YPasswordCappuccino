@@ -23,57 +23,57 @@
 
 - (void) setMasterPassword:(CPString)aMasterPassword
 {
-    console.log(@"YModel: setMasterPassword:%s", aMasterPassword);
+    // console.log(@"YModel: setMasterPassword:%s", aMasterPassword);
     _masterPassword=aMasterPassword;
 }
 - (CPString) masterPassword
 {
-    console.log(@"YModel: masterPassword: %d",_masterPassword);
+    // console.log(@"YModel: masterPassword: %d",_masterPassword);
     return _masterPassword;
 }
 - (void) setType:(CPString)anHashType
 {
-    console.log(@"YModel: setType:%s", anHashType);
+    // console.log(@"YModel: setType:%s", anHashType);
     _hashType=anHashType;
 }
 - (CPString) type
 {
-    console.log(@"YModel: hashType: %d",_hashType);
+    // console.log(@"YModel: hashType: %d",_hashType);
     return _hashType;
 }
 
 - (void) setUrl:(CPString)aURL
 {
-    console.log(@"YModel: setUrl:%s", aURL);
+    // console.log(@"YModel: setUrl:%s", aURL);
     _url=aURL;
 }
 - (CPString) url
 {
-    console.log(@"YModel: url: %d",_url);
+    // console.log(@"YModel: url: %d",_url);
     return _url;
 }
 
 - (void) setLength:(int)aLength
 {
     aLength=parseInt(aLength);
-    console.log(@"YModel: setLength:%d", aLength);
+    // console.log(@"YModel: setLength:%d", aLength);
     _length=aLength;
 }
 - (int) length
 {
-    console.log(@"YModel: length: %d",_length);
+    // console.log(@"YModel: length: %d",_length);
     return _length;
 }
 
 - (void) setUid:(int)anUid
 {
     uid=parseInt(anUid);
-    console.log(@"YModel: setUid:%d", anUid);
+    // console.log(@"YModel: setUid:%d", anUid);
     _uid=anUid;
 }
 - (int) uid
 {
-    console.log(@"YModel: uid: %d",_uid);
+    // console.log(@"YModel: uid: %d",_uid);
     return _uid;
 }
 
@@ -95,9 +95,9 @@
     } else if ( _hashType == "hexa" ) {
         hash = hex_sha1(toencrypt);
     } else {
-        console.log(@"[YModel] password: unknown hashType: '%s'", hashType);
+        // console.log(@"[YModel] password: unknown hashType: '%s'", hashType);
     }
-    console.log(@"YModel: password (toencrypt: %s)", toencrypt );
+    // console.log(@"YModel: password (toencrypt: %s)", toencrypt );
     return hash.substr(0,[self length]);
 }
 @end
