@@ -160,16 +160,18 @@
     var totalWidth=24*20.0 - 3.0;
     var totalHeight=6*27.0 - 3.0;
     var mainView=[[CPView alloc] initWithFrame:CGRectMake(
-        (CGRectGetWidth([contentView bounds]) - totalWidth )/2,
-        (CGRectGetMaxY([contentView bounds]) -totalHeight)/2,
+        0,0,
+        // (CGRectGetWidth([contentView bounds]) - totalWidth )/2,
+        // (CGRectGetMaxY([contentView bounds]) -totalHeight)/2,
         totalWidth,
         totalHeight
         )];
-    [mainView setBackgroundColor:[CPColor colorWithHexString:@"cccccc"]];
-    [mainView setAutoresizingMask: CPViewMinXMargin |
-                                   CPViewMaxXMargin |
-                                   CPViewMinYMargin |
-                                   CPViewMaxYMargin ];
+    [mainView setBackgroundColor:[CPColor colorWithHexString:@"eeeeee"]];
+    // [mainView setAutoresizingMask: CPViewMinXMargin |
+    //                                CPViewMaxXMargin |
+    //                                CPViewMinYMargin |
+    //                                CPViewMaxYMargin ];
+
     [self init_layout];
 
     model=[[YModel alloc] init];
