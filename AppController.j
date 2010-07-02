@@ -137,6 +137,19 @@
     [self updatePassword];
 }
 
+// -- textfields --
+- (void) controlTextDidEndEditing:(CPNotification)notification
+{
+    var tf=[notification object];
+    if ( tf == masterPasswordTextField ) {
+        [self masterPasswordChanged:tf];
+    } else if ( tf == urlTextField ) {
+        [self urlChanged:tf];
+    } else {
+        console.log ('ERROR: YPassword: controlTextDidEndEditing: cannot find textfield');
+    }
+}
+
 // -------------- APPLICATION --------------------
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
@@ -187,6 +200,7 @@
     [masterPasswordTextField setBezeled:true];
     [masterPasswordTextField setTarget:self];
     [masterPasswordTextField setAction:@selector(masterPasswordChanged:)];
+    [masterPasswordTextField setDelegate:self];
     [mainView addSubview:masterPasswordTextField];
 
     // == Line 3 ==
@@ -204,6 +218,7 @@
     [urlTextField setBezeled:true];
     [urlTextField setTarget:self];
     [urlTextField setAction:@selector(urlChanged:)];
+    [urlTextField setDelegate:self];
     [mainView addSubview:urlTextField];
 
     // == Line 3 ==
@@ -241,7 +256,7 @@
                  [self rectForColumn:1 line:4 width: 10 height: 1]];
     [hashType addItemWithTitle:@"base64"];
     [hashType addItemWithTitle:@"hexa"];
-    [hashType setTarget: self];
+    [hashType setTarget:self];
     [hashType setAction:@selector(typeChanged:)];
     [mainView addSubview:hashType];
 
