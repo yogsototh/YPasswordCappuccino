@@ -198,8 +198,6 @@
     [masterPasswordTextField setVerticalAlignment:CPCenterTextAlignment];
     [masterPasswordTextField setEditable:true];
     [masterPasswordTextField setBezeled:true];
-    [masterPasswordTextField setTarget:self];
-    [masterPasswordTextField setAction:@selector(masterPasswordChanged:)];
     [masterPasswordTextField setDelegate:self];
     [mainView addSubview:masterPasswordTextField];
 
@@ -216,8 +214,6 @@
     [urlTextField setVerticalAlignment:CPCenterTextAlignment];
     [urlTextField setEditable:true];
     [urlTextField setBezeled:true];
-    [urlTextField setTarget:self];
-    [urlTextField setAction:@selector(urlChanged:)];
     [urlTextField setDelegate:self];
     [mainView addSubview:urlTextField];
 
